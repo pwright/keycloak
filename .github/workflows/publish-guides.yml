@@ -1,0 +1,46 @@
+name: Publish Generated Guides
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  MAVEN_ARGS: "-B -nsu -Daether.connector.http.connectionMaxTtl=25"
+
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Build and publish generated guides
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Java
+        uses: ./.github/actions/java-setup
+
+      - name: Maven cache
+        uses: ./.github/actions/maven-cache
+
+      - name: Build guides
+        run: ./mvnw clean install -am -pl docs/guides -DskipTests
+
+      - name: Publish to generated-guides branch
+        run: |
+          cd docs/guides/target/generated-guides
+          git init --initial-branch=generated-guides
+          git add .
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "generated-guides: rebuild from ${GITHUB_SHA::8}"
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin generated-guides
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
