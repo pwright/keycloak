@@ -32,6 +32,16 @@ jobs:
       - name: Build guides
         run: ./mvnw clean install -am -pl docs/guides -DskipTests
 
+      - name: Copy traditional documentation books
+        run: |
+          mkdir -p docs/guides/target/generated-guides/documentation
+          cp -a docs/documentation/api_documentation \
+                docs/documentation/authorization_services \
+                docs/documentation/server_admin \
+                docs/documentation/server_development \
+                docs/documentation/topics \
+                docs/guides/target/generated-guides/documentation/
+
       - name: Publish to generated-guides branch
         run: |
           cd docs/guides/target/generated-guides
