@@ -1,0 +1,116 @@
+= Keycloak High Availability guide
+
+include::../attributes.adoc[]
+
+:links_high-availability_introduction_name: High availability overview
+:links_high-availability_introduction_url: #introduction
+:links_high-availability_single-cluster-introduction_name: Single-cluster deployments
+:links_high-availability_single-cluster-introduction_url: #single-cluster-introduction
+:links_high-availability_single-cluster-concepts_name: Concepts for single-cluster deployments
+:links_high-availability_single-cluster-concepts_url: #single-cluster-concepts
+:links_high-availability_single-cluster-building-blocks_name: Building blocks single-cluster deployments
+:links_high-availability_single-cluster-building-blocks_url: #single-cluster-building-blocks
+:links_high-availability_single-cluster-concepts-database-connections_name: Concepts for database connection pools
+:links_high-availability_single-cluster-concepts-database-connections_url: #single-cluster-concepts-database-connections
+:links_high-availability_single-cluster-concepts-threads_name: Concepts for configuring thread pools
+:links_high-availability_single-cluster-concepts-threads_url: #single-cluster-concepts-threads
+:links_high-availability_single-cluster-concepts-memory-and-cpu-sizing_name: Concepts for sizing CPU and memory resources
+:links_high-availability_single-cluster-concepts-memory-and-cpu-sizing_url: #single-cluster-concepts-memory-and-cpu-sizing
+:links_high-availability_single-cluster-deploy-aurora_name: Deploying AWS Aurora in multiple availability zones
+:links_high-availability_single-cluster-deploy-aurora_url: #single-cluster-deploy-aurora
+:links_high-availability_single-cluster-deploy-cnpg_name: Deploying CloudNativePG in multiple availability zones
+:links_high-availability_single-cluster-deploy-cnpg_url: #single-cluster-deploy-cnpg
+:links_high-availability_single-cluster-deploy-cnpg-with-backup_name: Deploying CloudNativePG with scheduled backups to S3
+:links_high-availability_single-cluster-deploy-cnpg-with-backup_url: #single-cluster-deploy-cnpg-with-backup
+:links_high-availability_single-cluster-monitoring-cnpg_name: Monitoring CloudNativePG
+:links_high-availability_single-cluster-monitoring-cnpg_url: #single-cluster-monitoring-cnpg
+:links_high-availability_single-cluster-deploy-cnpg-recovery_name: Recovering a CloudNativePG cluster from an S3 backup
+:links_high-availability_single-cluster-deploy-cnpg-recovery_url: #single-cluster-deploy-cnpg-recovery
+:links_high-availability_single-cluster-deploy-keycloak_name: Deploying {project_name} across multiple availability-zones with the Operator
+:links_high-availability_single-cluster-deploy-keycloak_url: #single-cluster-deploy-keycloak
+:links_high-availability_single-cluster-operate-cnpg-switchover_name: CloudNativePG Switchover Procedure
+:links_high-availability_single-cluster-operate-cnpg-switchover_url: #single-cluster-operate-cnpg-switchover
+:links_high-availability_multi-cluster-v2-introduction_name: Multi-cluster deployments (v2)
+:links_high-availability_multi-cluster-v2-introduction_url: #multi-cluster-v2-introduction
+:links_high-availability_multi-cluster-v2-concepts_name: Concepts for multi-cluster deployments (v2)
+:links_high-availability_multi-cluster-v2-concepts_url: #multi-cluster-v2-concepts
+:links_high-availability_multi-cluster-v2-deploy-keycloak-kubernetes_name: Deploying {project_name} for HA with the Operator (v2)
+:links_high-availability_multi-cluster-v2-deploy-keycloak-kubernetes_url: #multi-cluster-v2-deploy-keycloak-kubernetes
+:links_high-availability_multi-cluster-v2-deploy-keycloak-bare-metal_name: Deploying {project_name} for HA on bare-metal or virtual machines (v2)
+:links_high-availability_multi-cluster-v2-deploy-keycloak-bare-metal_url: #multi-cluster-v2-deploy-keycloak-bare-metal
+:links_high-availability_multi-cluster-v2-upgrades_name: Managing upgrades (v2)
+:links_high-availability_multi-cluster-v2-upgrades_url: #multi-cluster-v2-upgrades
+:links_high-availability_multi-cluster-v2-migrate-from-v1-to-v2_name: Migrating from multi-cluster v1 to v2
+:links_high-availability_multi-cluster-v2-migrate-from-v1-to-v2_url: #multi-cluster-v2-migrate-from-v1-to-v2
+:links_high-availability_multi-cluster-introduction_name: Multi-cluster deployments (v1)
+:links_high-availability_multi-cluster-introduction_url: #multi-cluster-introduction
+:links_high-availability_multi-cluster-concepts_name: Concepts for multi-cluster (v1) deployments
+:links_high-availability_multi-cluster-concepts_url: #multi-cluster-concepts
+:links_high-availability_multi-cluster-building-blocks_name: Building blocks multi-cluster deployments
+:links_high-availability_multi-cluster-building-blocks_url: #multi-cluster-building-blocks
+:links_high-availability_multi-cluster-concepts-database-connections_name: Concepts for database connection pools
+:links_high-availability_multi-cluster-concepts-database-connections_url: #multi-cluster-concepts-database-connections
+:links_high-availability_multi-cluster-concepts-threads_name: Concepts for configuring thread pools
+:links_high-availability_multi-cluster-concepts-threads_url: #multi-cluster-concepts-threads
+:links_high-availability_multi-cluster-concepts-memory-and-cpu-sizing_name: Concepts for sizing CPU and memory resources
+:links_high-availability_multi-cluster-concepts-memory-and-cpu-sizing_url: #multi-cluster-concepts-memory-and-cpu-sizing
+:links_high-availability_multi-cluster-concepts-infinispan-cli-batch_name: Concepts to automate {jdgserver_name} CLI commands
+:links_high-availability_multi-cluster-concepts-infinispan-cli-batch_url: #multi-cluster-concepts-infinispan-cli-batch
+:links_high-availability_multi-cluster-deploy-aurora_name: Deploying AWS Aurora in multiple availability zones
+:links_high-availability_multi-cluster-deploy-aurora_url: #multi-cluster-deploy-aurora
+:links_high-availability_multi-cluster-deploy-infinispan-kubernetes-crossdc_name: Deploying {jdgserver_name} for HA with the {jdgserver_name} Operator
+:links_high-availability_multi-cluster-deploy-infinispan-kubernetes-crossdc_url: #multi-cluster-deploy-infinispan-kubernetes-crossdc
+:links_high-availability_multi-cluster-deploy-keycloak-kubernetes_name: Deploying {project_name} for HA with the Operator
+:links_high-availability_multi-cluster-deploy-keycloak-kubernetes_url: #multi-cluster-deploy-keycloak-kubernetes
+:links_high-availability_multi-cluster-deploy-aws-accelerator-loadbalancer_name: Deploying an AWS Global Accelerator load balancer
+:links_high-availability_multi-cluster-deploy-aws-accelerator-loadbalancer_url: #multi-cluster-deploy-aws-accelerator-loadbalancer
+:links_high-availability_multi-cluster-deploy-aws-accelerator-fencing-lambda_name: Deploying an AWS Lambda to disable a non-responding site
+:links_high-availability_multi-cluster-deploy-aws-accelerator-fencing-lambda_url: #multi-cluster-deploy-aws-accelerator-fencing-lambda
+:links_high-availability_multi-cluster-operate-site-offline_name: Taking a site offline
+:links_high-availability_multi-cluster-operate-site-offline_url: #multi-cluster-operate-site-offline
+:links_high-availability_multi-cluster-operate-site-online_name: Bringing a site online
+:links_high-availability_multi-cluster-operate-site-online_url: #multi-cluster-operate-site-online
+:links_high-availability_multi-cluster-operate-synchronize_name: Synchronizing sites
+:links_high-availability_multi-cluster-operate-synchronize_url: #multi-cluster-operate-synchronize
+:links_high-availability_multi-cluster-health-checks_name: Health checks for multi-cluster deployments
+:links_high-availability_multi-cluster-health-checks_url: #multi-cluster-health-checks
+:links_high-availability_multi-cluster-upgrades_name: Managing upgrades
+:links_high-availability_multi-cluster-upgrades_url: #multi-cluster-upgrades
+
+include::introduction.adoc[leveloffset=+1]
+include::single-cluster/introduction.adoc[leveloffset=+1]
+include::single-cluster/concepts.adoc[leveloffset=+1]
+include::single-cluster/building-blocks.adoc[leveloffset=+1]
+include::single-cluster/concepts-database-connections.adoc[leveloffset=+1]
+include::single-cluster/concepts-threads.adoc[leveloffset=+1]
+include::single-cluster/concepts-memory-and-cpu-sizing.adoc[leveloffset=+1]
+include::single-cluster/deploy-aurora.adoc[leveloffset=+1]
+include::single-cluster/deploy-cnpg.adoc[leveloffset=+1]
+include::single-cluster/deploy-cnpg-with-backup.adoc[leveloffset=+1]
+include::single-cluster/monitoring-cnpg.adoc[leveloffset=+1]
+include::single-cluster/deploy-cnpg-recovery.adoc[leveloffset=+1]
+include::single-cluster/deploy-keycloak.adoc[leveloffset=+1]
+include::single-cluster/operate-cnpg-switchover.adoc[leveloffset=+1]
+include::multi-cluster-v2/introduction.adoc[leveloffset=+1]
+include::multi-cluster-v2/concepts.adoc[leveloffset=+1]
+include::multi-cluster-v2/deploy-keycloak-kubernetes.adoc[leveloffset=+1]
+include::multi-cluster-v2/deploy-keycloak-bare-metal.adoc[leveloffset=+1]
+include::multi-cluster-v2/upgrades.adoc[leveloffset=+1]
+include::multi-cluster-v2/migrate-from-v1-to-v2.adoc[leveloffset=+1]
+include::multi-cluster/introduction.adoc[leveloffset=+1]
+include::multi-cluster/concepts.adoc[leveloffset=+1]
+include::multi-cluster/building-blocks.adoc[leveloffset=+1]
+include::multi-cluster/concepts-database-connections.adoc[leveloffset=+1]
+include::multi-cluster/concepts-threads.adoc[leveloffset=+1]
+include::multi-cluster/concepts-memory-and-cpu-sizing.adoc[leveloffset=+1]
+include::multi-cluster/concepts-infinispan-cli-batch.adoc[leveloffset=+1]
+include::multi-cluster/deploy-aurora.adoc[leveloffset=+1]
+include::multi-cluster/deploy-infinispan-kubernetes-crossdc.adoc[leveloffset=+1]
+include::multi-cluster/deploy-keycloak-kubernetes.adoc[leveloffset=+1]
+include::multi-cluster/deploy-aws-accelerator-loadbalancer.adoc[leveloffset=+1]
+include::multi-cluster/deploy-aws-accelerator-fencing-lambda.adoc[leveloffset=+1]
+include::multi-cluster/operate-site-offline.adoc[leveloffset=+1]
+include::multi-cluster/operate-site-online.adoc[leveloffset=+1]
+include::multi-cluster/operate-synchronize.adoc[leveloffset=+1]
+include::multi-cluster/health-checks.adoc[leveloffset=+1]
+include::multi-cluster/upgrades.adoc[leveloffset=+1]

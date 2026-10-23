@@ -1,0 +1,59 @@
+= Securing applications
+
+include::../attributes.adoc[]
+
+:links_securing-apps_overview_name: Planning for securing applications and services
+:links_securing-apps_overview_url: #overview
+:links_securing-apps_oidc-layers_name: Securing applications and services with OpenID Connect
+:links_securing-apps_oidc-layers_url: #oidc-layers
+:links_securing-apps_mod-auth-openidc_name: Configuring the mod_auth_openidc Apache HTTPD Module
+:links_securing-apps_mod-auth-openidc_url: #mod-auth-openidc
+:links_securing-apps_saml-galleon-layers_name: {project_name} SAML Galleon feature pack for WildFly and EAP
+:links_securing-apps_saml-galleon-layers_url: #saml-galleon-layers
+:links_securing-apps_saml-galleon-layers-detailed-config_name: {project_name} SAML Galleon feature pack detailed configuration
+:links_securing-apps_saml-galleon-layers-detailed-config_url: #saml-galleon-layers-detailed-config
+:links_securing-apps_mod-auth-mellon_name: Configuring the mod_auth_mellon Apache Module
+:links_securing-apps_mod-auth-mellon_url: #mod-auth-mellon
+:links_securing-apps_distribution-registry_name: Configuring a Distribution Registry
+:links_securing-apps_distribution-registry_url: #distribution-registry
+:links_securing-apps_client-registration_name: Using the client registration service
+:links_securing-apps_client-registration_url: #client-registration
+:links_securing-apps_client-registration-cli_name: Automating client registration with the CLI
+:links_securing-apps_client-registration-cli_url: #client-registration-cli
+:links_securing-apps_mcp-authz-server_name: Integrating with Model Context Protocol (MCP)
+:links_securing-apps_mcp-authz-server_url: #mcp-authz-server
+:links_securing-apps_token-exchange_name: Configuring and using token exchange
+:links_securing-apps_token-exchange_url: #token-exchange
+:links_securing-apps_jwt-authorization-grant_name: JWT Authorization Grant
+:links_securing-apps_jwt-authorization-grant_url: #jwt-authorization-grant
+:links_securing-apps_identity-assertion-jwt-authorization-grant_name: Identity Assertion JWT Authorization Grant
+:links_securing-apps_identity-assertion-jwt-authorization-grant_url: #identity-assertion-jwt-authorization-grant
+:links_securing-apps_oauth-identity-authorization-chaining-across-domains_name: OAuth Identity and Authorization Chaining Across Domains
+:links_securing-apps_oauth-identity-authorization-chaining-across-domains_url: #oauth-identity-authorization-chaining-across-domains
+:links_securing-apps_dpop_name: Securing applications with Demonstrating Proof-of-Possession (DPoP)
+:links_securing-apps_dpop_url: #dpop
+:links_securing-apps_authzen-authorization_name: AuthZEN Authorization
+:links_securing-apps_authzen-authorization_url: #authzen-authorization
+:links_securing-apps_specifications_name: Specifications implemented
+:links_securing-apps_specifications_url: #specifications
+:links_securing-apps_ssf-support_name: Shared Signals Framework (SSF)
+:links_securing-apps_ssf-support_url: #ssf-support
+
+include::overview.adoc[leveloffset=+1]
+include::oidc-layers.adoc[leveloffset=+1]
+include::mod-auth-openidc.adoc[leveloffset=+1]
+include::saml-galleon-layers.adoc[leveloffset=+1]
+include::saml-galleon-layers-detailed-config.adoc[leveloffset=+1]
+include::mod-auth-mellon.adoc[leveloffset=+1]
+include::distribution-registry.adoc[leveloffset=+1]
+include::client-registration.adoc[leveloffset=+1]
+include::client-registration-cli.adoc[leveloffset=+1]
+include::mcp-authz-server.adoc[leveloffset=+1]
+include::token-exchange.adoc[leveloffset=+1]
+include::jwt-authorization-grant.adoc[leveloffset=+1]
+include::identity-assertion-jwt-authorization-grant.adoc[leveloffset=+1]
+include::oauth-identity-authorization-chaining-across-domains.adoc[leveloffset=+1]
+include::dpop.adoc[leveloffset=+1]
+include::authzen-authorization.adoc[leveloffset=+1]
+include::specifications.adoc[leveloffset=+1]
+include::ssf-support.adoc[leveloffset=+1]

@@ -1,0 +1,50 @@
+
+:guide-id: multi-cluster-v2-upgrades
+:guide-parent: multi-cluster-v2
+:guide-title: Managing upgrades (v2)
+:guide-summary: How to manage multi-cluster upgrades
+:guide-priority: 999
+:guide-tile-visible: false
+:guide-level-offset: 1
+:version: 999.0.0-SNAPSHOT
+
+include::../../attributes.adoc[]
+
+[[multi-cluster-v2-upgrades]]
+= Managing upgrades (v2)
+
+ifeval::["" == "true"]
+WARNING: This {section} is describing a feature which is currently in preview.
+ifeval::["" == ""]
+Please provide your feedback while we’re continuing to work on this.
+endif::[]
+ifeval::["" != ""]
+Please provide your feedback by link:[joining this discussion] while we’re continuing to work on this.
+endif::[]
+endif::[]
+
+
+This topic describes upgrade procedures for multi-cluster v2 deployments.
+See link:{links_high-availability_multi-cluster-v2-introduction_url}[{links_high-availability_multi-cluster-v2-introduction_name}] for the introduction and link:{links_high-availability_multi-cluster-v2-concepts_url}[{links_high-availability_multi-cluster-v2-concepts_name}] for the architecture overview.
+
+== {project_name} upgrades
+
+Patch upgrades can be deployed with zero-downtime.
+
+Deploying different {project_name} major/minor versions on each of the sites is not supported.
+It is technically possible for upgrades to be rolled out to both sites simultaneously, however we recommend that upgrades be rolled out to one site at a time in order to simplify monitoring and debugging.
+Rollouts in the different sites should be done promptly to avoid older sites writing data that other sites assume to be already migrated.
+
+For major or minor version upgrades:
+
+* Shut down all sites except one.
+* Deploy the new minor or major version in one site and verify the installation.
+* Deploy the new version in all other sites.
+
+== Database upgrades
+
+Follow your database vendor's zero-downtime upgrade procedure, and possibly combine it with a {project_name} upgrade.
+Ensure that synchronous replication remains configured after the upgrade, as disabling synchronous replication can lead to data loss during failover.
+Verify that the link:{links_high-availability_multi-cluster-v2-introduction_url}#multi-cluster-v2-infrastructure-requirements[{links_high-availability_multi-cluster-v2-introduction_name}] infrastructure requirements continue to be met after the upgrade.
+
+

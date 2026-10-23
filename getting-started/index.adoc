@@ -1,0 +1,23 @@
+= Keycloak getting started guide
+
+include::../attributes.adoc[]
+
+:links_getting-started_getting-started-zip_name: OpenJDK
+:links_getting-started_getting-started-zip_url: #getting-started-zip
+:links_getting-started_getting-started-docker_name: Docker
+:links_getting-started_getting-started-docker_url: #getting-started-docker
+:links_getting-started_getting-started-podman_name: Podman
+:links_getting-started_getting-started-podman_url: #getting-started-podman
+:links_getting-started_getting-started-kube_name: Kubernetes
+:links_getting-started_getting-started-kube_url: #getting-started-kube
+:links_getting-started_getting-started-openshift_name: OpenShift
+:links_getting-started_getting-started-openshift_url: #getting-started-openshift
+:links_getting-started_getting-started-scaling-and-tuning_name: Scaling
+:links_getting-started_getting-started-scaling-and-tuning_url: #getting-started-scaling-and-tuning
+
+include::getting-started-zip.adoc[leveloffset=+1]
+include::getting-started-docker.adoc[leveloffset=+1]
+include::getting-started-podman.adoc[leveloffset=+1]
+include::getting-started-kube.adoc[leveloffset=+1]
+include::getting-started-openshift.adoc[leveloffset=+1]
+include::getting-started-scaling-and-tuning.adoc[leveloffset=+1]

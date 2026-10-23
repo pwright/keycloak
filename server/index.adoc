@@ -1,0 +1,101 @@
+= Keycloak server guide
+
+include::../attributes.adoc[]
+
+:links_server_configuration_name: Configuring {project_name}
+:links_server_configuration_url: #configuration
+:links_server_supported-configurations_name: Supported Configurations
+:links_server_supported-configurations_url: #supported-configurations
+:links_server_configuration-production_name: Configuring {project_name} for production
+:links_server_configuration-production_url: #configuration-production
+:links_server_bootstrap-admin-recovery_name: Bootstrapping and recovering an admin account
+:links_server_bootstrap-admin-recovery_url: #bootstrap-admin-recovery
+:links_server_directory-structure_name: Directory Structure
+:links_server_directory-structure_url: #directory-structure
+:links_server_containers_name: Running {project_name} in a container
+:links_server_containers_url: #containers
+:links_server_enabletls_name: Configuring TLS
+:links_server_enabletls_url: #enabletls
+:links_server_hostname_name: Configuring the hostname (v2)
+:links_server_hostname_url: #hostname
+:links_server_reverseproxy_name: Configuring a reverse proxy
+:links_server_reverseproxy_url: #reverseproxy
+:links_server_haproxy-passthrough_name: HAProxy with TLS passthrough
+:links_server_haproxy-passthrough_url: #haproxy-passthrough
+:links_server_haproxy-reencrypt_name: HAProxy with TLS re-encrypt
+:links_server_haproxy-reencrypt_url: #haproxy-reencrypt
+:links_server_traefik-passthrough_name: Traefik with TLS passthrough
+:links_server_traefik-passthrough_url: #traefik-passthrough
+:links_server_traefik-reencrypt_name: Traefik with TLS re-encrypt
+:links_server_traefik-reencrypt_url: #traefik-reencrypt
+:links_server_db_name: Configuring the database
+:links_server_db_url: #db
+:links_server_caching_name: Configuring distributed caches
+:links_server_caching_url: #caching
+:links_server_outgoinghttp_name: Configuring outgoing HTTP requests
+:links_server_outgoinghttp_url: #outgoinghttp
+:links_server_keycloak-truststore_name: Configuring trusted certificates
+:links_server_keycloak-truststore_url: #keycloak-truststore
+:links_server_mutual-tls_name: Configuring trusted certificates for mTLS
+:links_server_mutual-tls_url: #mutual-tls
+:links_server_features_name: Enabling and disabling features
+:links_server_features_url: #features
+:links_server_configuration-provider_name: Configuring providers
+:links_server_configuration-provider_url: #configuration-provider
+:links_server_logging_name: Configuring logging
+:links_server_logging_url: #logging
+:links_server_logging-console_name: Console logging
+:links_server_logging-console_url: #logging-console
+:links_server_logging-file_name: File logging
+:links_server_logging-file_url: #logging-file
+:links_server_logging-syslog_name: Syslog logging
+:links_server_logging-syslog_url: #logging-syslog
+:links_server_fips_name: FIPS 140-2 support
+:links_server_fips_url: #fips
+:links_server_management-interface_name: Configuring the Management Interface
+:links_server_management-interface_url: #management-interface
+:links_server_importExport_name: Importing and exporting realms
+:links_server_importExport_url: #importExport
+:links_server_vault_name: Using a vault
+:links_server_vault_url: #vault
+:links_server_all-config_name: All configuration
+:links_server_all-config_url: #all-config
+:links_server_all-provider-config_name: All provider configuration
+:links_server_all-provider-config_url: #all-provider-config
+:links_server_update-compatibility_name: Checking if rolling updates are possible
+:links_server_update-compatibility_url: #update-compatibility
+:links_server_windows-service_name: Run {project_name} as a Windows Service
+:links_server_windows-service_url: #windows-service
+
+include::configuration.adoc[leveloffset=+1]
+include::supported-configurations.adoc[leveloffset=+1]
+include::configuration-production.adoc[leveloffset=+1]
+include::bootstrap-admin-recovery.adoc[leveloffset=+1]
+include::directory-structure.adoc[leveloffset=+1]
+include::containers.adoc[leveloffset=+1]
+include::enabletls.adoc[leveloffset=+1]
+include::hostname.adoc[leveloffset=+1]
+include::reverseproxy.adoc[leveloffset=+1]
+include::haproxy-passthrough.adoc[leveloffset=+1]
+include::haproxy-reencrypt.adoc[leveloffset=+1]
+include::traefik-passthrough.adoc[leveloffset=+1]
+include::traefik-reencrypt.adoc[leveloffset=+1]
+include::db.adoc[leveloffset=+1]
+include::caching.adoc[leveloffset=+1]
+include::outgoinghttp.adoc[leveloffset=+1]
+include::keycloak-truststore.adoc[leveloffset=+1]
+include::mutual-tls.adoc[leveloffset=+1]
+include::features.adoc[leveloffset=+1]
+include::configuration-provider.adoc[leveloffset=+1]
+include::logging.adoc[leveloffset=+1]
+include::logging/console.adoc[leveloffset=+2]
+include::logging/file.adoc[leveloffset=+2]
+include::logging/syslog.adoc[leveloffset=+2]
+include::fips.adoc[leveloffset=+1]
+include::management-interface.adoc[leveloffset=+1]
+include::importExport.adoc[leveloffset=+1]
+include::vault.adoc[leveloffset=+1]
+include::all-config.adoc[leveloffset=+1]
+include::all-provider-config.adoc[leveloffset=+1]
+include::update-compatibility.adoc[leveloffset=+1]
+include::windows-service.adoc[leveloffset=+1]

@@ -1,0 +1,8 @@
+= Keycloak migration guide
+
+include::../attributes.adoc[]
+
+:links_migration_migrating-to-quarkus_name: Migrating to Quarkus distribution
+:links_migration_migrating-to-quarkus_url: #migrating-to-quarkus
+
+include::migrating-to-quarkus.adoc[leveloffset=+1]

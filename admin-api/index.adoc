@@ -1,0 +1,14 @@
+= Keycloak Admin API Guide
+
+include::../attributes.adoc[]
+
+:links_admin-api_protocol-mappers_name: Protocol Mappers
+:links_admin-api_protocol-mappers_url: #protocol-mappers
+:links_admin-api_admin-api-v2_name: Admin API v2: Reference
+:links_admin-api_admin-api-v2_url: #admin-api-v2
+:links_admin-api_querying_name: Admin API v2: Filtering and Projection
+:links_admin-api_querying_url: #querying
+
+include::protocol-mappers.adoc[leveloffset=+1]
+include::admin-api-v2.adoc[leveloffset=+1]
+include::querying.adoc[leveloffset=+1]

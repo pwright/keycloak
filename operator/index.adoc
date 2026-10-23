@@ -1,0 +1,26 @@
+= Keycloak Operator guide
+
+include::../attributes.adoc[]
+
+:links_operator_installation_name: {project_name} Operator Installation
+:links_operator_installation_url: #installation
+:links_operator_basic-deployment_name: Basic {project_name} deployment
+:links_operator_basic-deployment_url: #basic-deployment
+:links_operator_realm-import_name: Automating a realm import
+:links_operator_realm-import_url: #realm-import
+:links_operator_managing-clients_name: Managing Keycloak Clients
+:links_operator_managing-clients_url: #managing-clients
+:links_operator_advanced-configuration_name: Advanced configuration
+:links_operator_advanced-configuration_url: #advanced-configuration
+:links_operator_rolling-updates_name: Avoiding downtime with rolling updates
+:links_operator_rolling-updates_url: #rolling-updates
+:links_operator_customizing-keycloak_name: Using custom {project_name} images
+:links_operator_customizing-keycloak_url: #customizing-keycloak
+
+include::installation.adoc[leveloffset=+1]
+include::basic-deployment.adoc[leveloffset=+1]
+include::realm-import.adoc[leveloffset=+1]
+include::managing-clients.adoc[leveloffset=+1]
+include::advanced-configuration.adoc[leveloffset=+1]
+include::rolling-updates.adoc[leveloffset=+1]
+include::customizing-keycloak.adoc[leveloffset=+1]

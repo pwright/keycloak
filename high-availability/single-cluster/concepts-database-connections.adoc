@@ -1,0 +1,35 @@
+
+:guide-id: single-cluster-concepts-database-connections
+:guide-parent: single-cluster
+:guide-title: Concepts for database connection pools
+:guide-summary: Understand concepts for avoiding resource exhaustion and congestion.
+:guide-priority: 999
+:guide-tile-visible: false
+:guide-level-offset: 1
+:version: 999.0.0-SNAPSHOT
+
+include::../../attributes.adoc[]
+
+[[single-cluster-concepts-database-connections]]
+= Concepts for database connection pools
+
+ifeval::["" == "true"]
+WARNING: This {section} is describing a feature which is currently in preview.
+ifeval::["" == ""]
+Please provide your feedback while we’re continuing to work on this.
+endif::[]
+ifeval::["" != ""]
+Please provide your feedback by link:[joining this discussion] while we’re continuing to work on this.
+endif::[]
+endif::[]
+
+
+This section is intended when you want to understand considerations and best practices on how to configure database connection pools for {project_name}.
+For a configuration where this is applied, visit link:{links_high-availability_single-cluster-deploy-keycloak_url}[{links_high-availability_single-cluster-deploy-keycloak_name}].
+
+[#single-cluster-db-concepts]
+== Concepts
+
+include::../partials/database-connections/configure-db-connection-pool-best-practices.adoc[]
+
+

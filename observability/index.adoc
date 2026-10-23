@@ -1,0 +1,65 @@
+= Keycloak observability guide
+
+include::../attributes.adoc[]
+
+:links_observability_telemetry_name: Centralize your observability stack with OpenTelemetry
+:links_observability_telemetry_url: #telemetry
+:links_observability_health_name: Tracking instance status with health checks
+:links_observability_health_url: #health
+:links_observability_configuration-metrics_name: Gaining insights with metrics
+:links_observability_configuration-metrics_url: #configuration-metrics
+:links_observability_event-metrics_name: Monitoring user activities with event metrics
+:links_observability_event-metrics_url: #event-metrics
+:links_observability_keycloak-service-level-indicators_name: Monitoring performance with Service Level Indicators
+:links_observability_keycloak-service-level-indicators_url: #keycloak-service-level-indicators
+:links_observability_metrics-for-troubleshooting_name: Troubleshooting using metrics
+:links_observability_metrics-for-troubleshooting_url: #metrics-for-troubleshooting
+:links_observability_metrics-for-troubleshooting-keycloak_name: Self-provided metrics
+:links_observability_metrics-for-troubleshooting-keycloak_url: #metrics-for-troubleshooting-keycloak
+:links_observability_metrics-for-troubleshooting-jvm_name: JVM metrics
+:links_observability_metrics-for-troubleshooting-jvm_url: #metrics-for-troubleshooting-jvm
+:links_observability_metrics-for-troubleshooting-database_name: Database Metrics
+:links_observability_metrics-for-troubleshooting-database_url: #metrics-for-troubleshooting-database
+:links_observability_metrics-for-troubleshooting-http_name: HTTP metrics
+:links_observability_metrics-for-troubleshooting-http_url: #metrics-for-troubleshooting-http
+:links_observability_metrics-for-troubleshooting-cache_name: Local caching metrics
+:links_observability_metrics-for-troubleshooting-cache_url: #metrics-for-troubleshooting-cache
+:links_observability_metrics-for-troubleshooting-clustering-and-network_name: Clustering metrics
+:links_observability_metrics-for-troubleshooting-clustering-and-network_url: #metrics-for-troubleshooting-clustering-and-network
+:links_observability_metrics-for-troubleshooting-embedded-caches_name: Embedded Infinispan metrics for single-cluster deployments
+:links_observability_metrics-for-troubleshooting-embedded-caches_url: #metrics-for-troubleshooting-embedded-caches
+:links_observability_metrics-for-troubleshooting-embedded-caches-multi-cluster_name: Embedded Infinispan metrics for multi-cluster deployments
+:links_observability_metrics-for-troubleshooting-embedded-caches-multi-cluster_url: #metrics-for-troubleshooting-embedded-caches-multi-cluster
+:links_observability_metrics-for-troubleshooting-external-infinispan-multi-cluster_name: External {jdgserver_name} metrics
+:links_observability_metrics-for-troubleshooting-external-infinispan-multi-cluster_url: #metrics-for-troubleshooting-external-infinispan-multi-cluster
+:links_observability_tracing_name: Root cause analysis with tracing
+:links_observability_tracing_url: #tracing
+:links_observability_grafana-dashboards_name: Visualizing activities in dashboards
+:links_observability_grafana-dashboards_url: #grafana-dashboards
+:links_observability_exemplars_name: Analyzing outliers and errors with exemplars
+:links_observability_exemplars_url: #exemplars
+:links_observability_thread-dumps_name: Troubleshooting performance issues using JVM thread dumps
+:links_observability_thread-dumps_url: #thread-dumps
+:links_observability_jfr_name: Troubleshooting performance issues using Java Flight Recorder (JFR)
+:links_observability_jfr_url: #jfr
+
+include::telemetry.adoc[leveloffset=+1]
+include::health.adoc[leveloffset=+1]
+include::configuration-metrics.adoc[leveloffset=+1]
+include::event-metrics.adoc[leveloffset=+1]
+include::keycloak-service-level-indicators.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-keycloak.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-jvm.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-database.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-http.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-cache.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-clustering-and-network.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-embedded-caches.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-embedded-caches-multi-cluster.adoc[leveloffset=+1]
+include::metrics-for-troubleshooting-external-infinispan-multi-cluster.adoc[leveloffset=+1]
+include::tracing.adoc[leveloffset=+1]
+include::grafana-dashboards.adoc[leveloffset=+1]
+include::exemplars.adoc[leveloffset=+1]
+include::thread-dumps.adoc[leveloffset=+1]
+include::jfr.adoc[leveloffset=+1]

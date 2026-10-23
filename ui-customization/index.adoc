@@ -1,0 +1,29 @@
+= Keycloak UI customization guide
+
+include::../attributes.adoc[]
+
+:links_ui-customization_introduction_name: Introduction
+:links_ui-customization_introduction_url: #introduction
+:links_ui-customization_themes_name: Working with themes
+:links_ui-customization_themes_url: #themes
+:links_ui-customization_quick-theme_name: Customizing with Quick Theme
+:links_ui-customization_quick-theme_url: #quick-theme
+:links_ui-customization_localization_name: Localization
+:links_ui-customization_localization_url: #localization
+:links_ui-customization_avatars_name: Using Avatars
+:links_ui-customization_avatars_url: #avatars
+:links_ui-customization_welcome-theme_name: Customizing the Welcome Theme
+:links_ui-customization_welcome-theme_url: #welcome-theme
+:links_ui-customization_creating-your-own-console_name: Creating your own Console
+:links_ui-customization_creating-your-own-console_url: #creating-your-own-console
+:links_ui-customization_themes-react_name: Using the npm UI packages
+:links_ui-customization_themes-react_url: #themes-react
+
+include::introduction.adoc[leveloffset=+1]
+include::themes.adoc[leveloffset=+1]
+include::quick-theme.adoc[leveloffset=+1]
+include::localization.adoc[leveloffset=+1]
+include::avatars.adoc[leveloffset=+1]
+include::welcome-theme.adoc[leveloffset=+1]
+include::creating-your-own-console.adoc[leveloffset=+1]
+include::themes-react.adoc[leveloffset=+1]

@@ -1,0 +1,181 @@
+
+:guide-id: multi-cluster-introduction
+:guide-parent: multi-cluster
+:guide-title: Multi-cluster deployments (v1)
+:guide-summary: Connect multiple {project_name} deployments in independent {kubernetes} clusters
+:guide-priority: 999
+:guide-tile-visible: true
+:guide-level-offset: 1
+:version: 999.0.0-SNAPSHOT
+
+include::../../attributes.adoc[]
+
+[[multi-cluster-introduction]]
+= Multi-cluster deployments (v1)
+
+ifeval::["" == "true"]
+WARNING: This {section} is describing a feature which is currently in preview.
+ifeval::["" == ""]
+Please provide your feedback while we’re continuing to work on this.
+endif::[]
+ifeval::["" != ""]
+Please provide your feedback by link:[joining this discussion] while we’re continuing to work on this.
+endif::[]
+endif::[]
+
+
+WARNING: Multi-cluster v1 (the `multi-site` feature) is deprecated and will be removed in a future release. Use link:{links_high-availability_multi-cluster-v2-introduction_url}[{links_high-availability_multi-cluster-v2-introduction_name}] instead, which simplifies the deployment architecture by removing the external {jdgserver_name} cluster. See link:{links_high-availability_multi-cluster-v2-migrate-from-v1-to-v2_url}[{links_high-availability_multi-cluster-v2-migrate-from-v1-to-v2_name}] for migration instructions.
+
+{project_name} supports deployments that consist of multiple {project_name} instances that connect to each other using its embedded Infinispan caches. Load balancers can distribute the load evenly across those instances.
+Those setups are intended for transparent networks, see link:{links_high-availability_single-cluster-introduction_url}[{links_high-availability_single-cluster-introduction_name}] for more details.
+
+A multi-cluster setup adds additional components, which allows non-transparent networks to be bridged,
+in order to provide additional high availability that may be needed for some environments.
+
+== When to use a multi-cluster setup
+
+The multi-cluster deployment capabilities of {project_name} are targeted at use cases that:
+
+* Are constrained to a single
+ifeval::[{project_product} == true]
+AWS Region.
+endif::[]
+ifeval::[{project_product} != true]
+AWS Region or an equivalent low-latency setup.
+endif::[]
+* Permit planned outages for maintenance.
+* Fit within a defined user and request count.
+* Can accept the impact of periodic outages.
+* Deployed in data centers with the required network latency and database configuration
+
+[#multi-cluster-tested-configuration]
+== Tested Configuration
+
+We regularly test {project_name} with the following configuration:
+
+* Two OpenShift single-AZ clusters, in the same AWS Region
+** Provisioned with https://www.redhat.com/en/technologies/cloud-computing/openshift/aws[Red Hat OpenShift Service on AWS] (ROSA),
+using ROSA HCP.
+
+** All worker nodes reside in a single Availability Zone.
+** OpenShift version 4.21.
+
+* Amazon Aurora PostgreSQL database
+** High availability with a primary DB instance in one availability zone, and a synchronously replicated reader in the second availability zone
+** Version 17.5
+
+* AWS Global Accelerator, sending traffic to both ROSA clusters
+
+* AWS Lambda triggered by ROSA's Prometheus and Alert Manager to automate failover
+
+[#multi-cluster-supported-configuration]
+== Supported Configuration
+
+The following environment is used for regular functional, failure, and performance validation. It is an engineering reference environment, not a prescribed or certified HA architecture.
+It is not the only environment in which the documented {project_name} HA capabilities can be used.
+
+* Two {kubernetes} single-AZ clusters, in the same AWS Region
+** Provisioned with https://www.redhat.com/en/technologies/cloud-computing/openshift/aws[Red Hat OpenShift Service on AWS] (ROSA),
+either ROSA HCP or ROSA classic.
+
+** Each {kubernetes} cluster has all its workers in a single Availability Zone.
+ifeval::[{project_product} == true]
+** OpenShift version
+4.21 (or later).
+endif::[]
+ifeval::[{project_product} != true]
+** Kubernetes version 1.30
+endif::[]
+
+* Amazon Aurora PostgreSQL database
+** High availability with a primary DB instance in one availability zone, and a synchronously replicated reader in the second availability zone
+** Version 17.5
+
+* AWS Global Accelerator, sending traffic to both ROSA clusters
+
+* AWS Lambda to automate failover
+
+ifeval::[{project_product} == true]
+A deviation from these requirements can cause data loss, errors or outages. Any issues encountered with {project_name} would need to be replicated in an environment that meets these requirements in order for the Red Hat support team to assist.
+endif::[]
+ifeval::[{project_product} != true]
+While equivalent setups should work, you will need to verify the performance and failure behavior of your environment.
+We provide functional tests, failure tests and load tests in the link:{keycloak_benchmark_link}[{keycloak_benchmark_name}].
+endif::[]
+
+Read more on each item in the link:{links_high-availability_multi-cluster-building-blocks_url}[{links_high-availability_multi-cluster-building-blocks_name}] {section}.
+
+[#multi-cluster-load]
+ifeval::[{project_product} == true]
+== Maximum load
+endif::[]
+ifeval::[{project_product} != true]
+== Tested load
+endif::[]
+
+We regularly test {project_name} with the following load:
+
+* 1,000,000 users
+* 300 requests per second
+
+[IMPORTANT]
+====
+It is imperative that your production deployments are integrated with an observability stack in order to identify issues
+early and facilitate troubleshooting when they do arise. Additional demand on {project_name} makes isolating issues harder,
+therefore this becomes increasingly pertinent as the total number of users and requests per second increases.
+====
+
+ifeval::[{project_product} != true]
+While we did not see a hard limit in our tests with these values, we ask you to test for higher volumes with horizontally and vertically scaled {project_name} name instances and databases.
+endif::[]
+
+See the link:{links_high-availability_multi-cluster-concepts-memory-and-cpu-sizing_url}[{links_high-availability_multi-cluster-concepts-memory-and-cpu-sizing_name}] {section} for more information.
+
+[#multi-cluster-limitations]
+== Limitations
+
+ifeval::[{project_product} != true]
+Even with the additional redundancy of the two sites, downtimes can still occur:
+endif::[]
+
+* During certain failure scenarios, there may be downtime of up to 5 minutes.
+* After certain failure scenarios, manual intervention may be required to restore redundancy by bringing the failed site back online.
+* During certain switchover scenarios, there may be downtime of up to 5 minutes.
+
+For more details on limitations see the link:{links_high-availability_multi-cluster-concepts_url}[{links_high-availability_multi-cluster-concepts_name}] {section}.
+
+== Next steps
+
+The different {sections} introduce the necessary concepts and building blocks.
+For each building block, a blueprint shows how to set a fully functional example.
+Additional performance tuning and security hardening are still recommended when preparing a production setup.
+
+ifeval::[{project_product} != true]
+== Concept and building block overview
+
+* link:{links_high-availability_multi-cluster-concepts_url}[{links_high-availability_multi-cluster-concepts_name}]
+* link:{links_high-availability_multi-cluster-building-blocks_url}[{links_high-availability_multi-cluster-building-blocks_name}]
+* link:{links_high-availability_multi-cluster-concepts-database-connections_url}[{links_high-availability_multi-cluster-concepts-database-connections_name}]
+* link:{links_high-availability_multi-cluster-concepts-threads_url}[{links_high-availability_multi-cluster-concepts-threads_name}]
+* link:{links_high-availability_multi-cluster-concepts-memory-and-cpu-sizing_url}[{links_high-availability_multi-cluster-concepts-memory-and-cpu-sizing_name}]
+* link:{links_high-availability_multi-cluster-concepts-infinispan-cli-batch_url}[{links_high-availability_multi-cluster-concepts-infinispan-cli-batch_name}]
+
+== Blueprints for building blocks
+
+* link:{links_high-availability_multi-cluster-deploy-aurora_url}[{links_high-availability_multi-cluster-deploy-aurora_name}]
+* link:{links_high-availability_multi-cluster-deploy-infinispan-kubernetes-crossdc_url}[{links_high-availability_multi-cluster-deploy-infinispan-kubernetes-crossdc_name}]
+* link:{links_high-availability_multi-cluster-deploy-keycloak-kubernetes_url}[{links_high-availability_multi-cluster-deploy-keycloak-kubernetes_name}]
+* link:{links_high-availability_multi-cluster-deploy-aws-accelerator-loadbalancer_url}[{links_high-availability_multi-cluster-deploy-aws-accelerator-loadbalancer_name}]
+* link:{links_high-availability_multi-cluster-deploy-aws-accelerator-fencing-lambda_url}[{links_high-availability_multi-cluster-deploy-aws-accelerator-fencing-lambda_name}]
+
+== Operational procedures
+
+* link:{links_high-availability_multi-cluster-operate-synchronize_url}[{links_high-availability_multi-cluster-operate-synchronize_name}]
+* link:{links_high-availability_multi-cluster-operate-site-offline_url}[{links_high-availability_multi-cluster-operate-site-offline_name}]
+* link:{links_high-availability_multi-cluster-operate-site-online_url}[{links_high-availability_multi-cluster-operate-site-online_name}]
+* link:{links_high-availability_multi-cluster-health-checks_url}[{links_high-availability_multi-cluster-health-checks_name}]
+* link:{links_high-availability_multi-cluster-upgrades_url}[{links_high-availability_multi-cluster-upgrades_name}]
+
+endif::[]
+
+
